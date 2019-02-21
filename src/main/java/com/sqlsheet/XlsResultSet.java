@@ -207,12 +207,7 @@ public class XlsResultSet implements ResultSet {
 			try {
 				return getCellValue(cell.getCachedFormulaResultType(), columnType, cell, jdbcColumn);
 			} catch (RuntimeException e) {
-				int formulaCellType = workbook.getCreationHelper().createFormulaEvaluator().evaluateFormulaCell(cell);
-				try {
-					return getCellValue(formulaCellType, columnType, cell, jdbcColumn);
-				} catch (Exception e2) {
-					throw e;
-				}
+				throw e;
 			}
 		default:
 			return null;
